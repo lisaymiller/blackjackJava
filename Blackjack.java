@@ -66,11 +66,11 @@ public class Blackjack {
             playerHand.draw(playingDeck);
 
             // Set the values and suits of the cards to test split functionality
-            // playerHand.getCard(0).setValue(Values.ACE);
-            // playerHand.getCard(0).setSuit(Suits.CLUB);
-            //
-            // playerHand.getCard(1).setValue(Values.ACE);
-            // playerHand.getCard(1).setSuit(Suits.DIAMOND);
+            playerHand.getCard(0).setValue(Values.ACE);
+            playerHand.getCard(0).setSuit(Suits.CLUB);
+
+            playerHand.getCard(1).setValue(Values.ACE);
+            playerHand.getCard(1).setSuit(Suits.DIAMOND);
 
             // Dealer gets two cards
             dealerHand.draw(playingDeck);
@@ -106,7 +106,7 @@ public class Blackjack {
                 if (!answerSplit.equalsIgnoreCase("yes") && playerHand.getCard(0).getValue() == Values.ACE
                         || playerHand.getCard(0).getValue() == Values.EIGHT) {
                     Thread.sleep(800);
-                    System.out.println("You should always split Eights or Aces. Would you like to split your cards?");
+                    System.out.print("\nYou should always split Eights or Aces. Would you like to split your cards?");
                     answerSplit = userInput.next();
                 }
 
@@ -122,9 +122,9 @@ public class Blackjack {
                 // if they haven't busted or decided to stand
                 if (!splitHitOrStand.equalsIgnoreCase("stand") && !(split.cardsValue() >= 21)) {
                     Thread.sleep(800);
-                    System.out.print("Your first hand is now: " + split.toString());
+                    System.out.print("\nYour first hand is now: " + split.toString());
                     Thread.sleep(800);
-                    System.out.print("Would you like to hit or stand? ");
+                    System.out.print("\nWould you like to hit or stand? ");
                     splitHitOrStand = userInput.next();
 
                     // Player hits
@@ -151,7 +151,7 @@ public class Blackjack {
                     Thread.sleep(800);
                     System.out.println("Your second hand is now: " + playerHand.toString());
                     Thread.sleep(800);
-                    System.out.print("Would you like to hit or stand? ");
+                    System.out.print("\nWould you like to hit or stand? ");
                     hitOrStand = userInput.next();
 
                     if (hitOrStand.equalsIgnoreCase("hit")) {
@@ -188,7 +188,7 @@ public class Blackjack {
                 if (playerHand.cardsValue() == 9 || playerHand.cardsValue() == 10
                         || playerHand.cardsValue() == 11 && !answerSplit.equalsIgnoreCase("yes")) {
                     Thread.sleep(800);
-                    System.out.print("Do you want to Double Down? ");
+                    System.out.print("\nDo you want to Double Down? ");
                     answerdd = userInput.next();
                 }
 
@@ -256,7 +256,8 @@ public class Blackjack {
                     } else { // player has enough money to double down
                         playerBet = playerBet * 2;
                         doubleDown = true;
-                        System.out.println("Your bet is now $" + playerBet);
+                        Thread.sleep(800);
+                        System.out.print("\nYour bet is now $" + playerBet);
                         playerHand.draw(playingDeck);
                         Thread.sleep(800);
                         System.out.println("\nYou draw a: " + playerHand.getCard(playerHand.deckSize() - 1).toString());
